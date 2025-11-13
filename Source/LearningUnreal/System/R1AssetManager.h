@@ -7,7 +7,7 @@
 #include "Engine/AssetManager.h"
 #include "R1AssetManager.generated.h"
 
-// ※ @@@ Edit - ProjectSettings - Engine 에서 'AssetManager' 검색후, 아래의 상속한 클래스 할당 필요 @@@
+
 
 class UR1AssetData;
 

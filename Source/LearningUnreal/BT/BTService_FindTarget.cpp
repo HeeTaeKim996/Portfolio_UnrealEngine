@@ -33,7 +33,7 @@ void UBTService_FindTarget::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* N
 		OverlapResults,
 		Location,
 		FQuat::Identity,
-		ECollisionChannel::ECC_GameTraceChannel12, // ※ 주의. config - 의 ...ini 파일 중 하나에서 채털넘버를 알아야 할 수 있다 함. 오류 조심.
+		ECollisionChannel::ECC_GameTraceChannel12,
 		FCollisionShape::MakeSphere(SearchRadius),
 		CollisionQueryParam
 	);
@@ -48,7 +48,7 @@ void UBTService_FindTarget::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* N
 			if (R1Character)
 			{
 				OwnerComp.GetBlackboardComponent()->SetValueAsObject(TargetKey.SelectedKeyName, R1Character);
-				DrawDebugSphere(World, Location, SearchRadius, 16, FColor::Green, false, 0.2f); // ※ 디버깅 용도
+				DrawDebugSphere(World, Location, SearchRadius, 16, FColor::Green, false, 0.2f); 
 
 				if (R1Character->CreatureState == ECreatureState::Dead)
 				{
@@ -63,7 +63,7 @@ void UBTService_FindTarget::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* N
 	}
 
 
-	OwnerComp.GetBlackboardComponent()->SetValueAsObject(TargetKey.SelectedKeyName, nullptr); // 없는 경우, nullptr 을 반환
-	DrawDebugSphere(World, Location, SearchRadius, 16, FColor::Red, false, 0.2f); // ※ 디버깅 용도
+	OwnerComp.GetBlackboardComponent()->SetValueAsObject(TargetKey.SelectedKeyName, nullptr);
+	DrawDebugSphere(World, Location, SearchRadius, 16, FColor::Red, false, 0.2f);
 	Monster->Target = nullptr;
 }

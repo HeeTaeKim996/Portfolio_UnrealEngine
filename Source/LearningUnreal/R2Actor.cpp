@@ -10,13 +10,13 @@ AR2Actor::AR2Actor()
 	PrimaryActorTick.bCanEverTick = true;
 
 
-	{ // BP 가 아닌, 에셋 할당 하드코딩 방법
+	{
 #if 0
 		Body = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Body"));
 
 		ConstructorHelpers::FObjectFinder<UStaticMesh> FindMesh(TEXT(
 			"/Script/Engine.StaticMesh'/Game/_Arts/LevelPrototyping/Meshes/SM_ChamferCube.SM_ChamferCube'"));
-		// ※ 에셋 우클릭 후 CopyFilePath 하거나, 에셋 클릭후 Ctrl + C 하면 경로 복사됨
+		
 		if (FindMesh.Succeeded())
 		{
 			Body->SetStaticMesh(FindMesh.Object);
@@ -53,10 +53,10 @@ void AR2Actor::BeginPlay()
 	Super::BeginPlay();
 	
 #if 0
-	UGameplayStatics::GetActorOfClass(GetWorld(), AR2Actor::StaticClass()); // ※ == FindObjectOfType
+	UGameplayStatics::GetActorOfClass(GetWorld(), AR2Actor::StaticClass());
 #elif 1
 	TArray<AActor*> Actors;
-	UGameplayStatics::GetAllActorsWithTag(GetWorld(), TEXT("Harry"), Actors); //
+	UGameplayStatics::GetAllActorsWithTag(GetWorld(), TEXT("Harry"), Actors);
 
 	if (Actors.Num() > 0)
 	{

@@ -16,7 +16,7 @@ AR1Character::AR1Character()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-#if 0 // R1Player 로 이동
+#if 0 // Obsolate. Moved To R1Player
 	bUseControllerRotationYaw = false;
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	

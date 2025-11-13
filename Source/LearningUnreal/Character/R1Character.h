@@ -86,7 +86,7 @@ public:
 
 
 protected:
-#if 0 // R1Player 로 이동
+#if 0 // Obsolate. Moved To R1Player
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<class USpringArmComponent> SpringArm;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)

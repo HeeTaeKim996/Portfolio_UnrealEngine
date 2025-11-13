@@ -20,15 +20,15 @@ void AR1AIController::BeginPlay()
 	Super::BeginPlay();
 
 
-#if 0 // 네브메시 포인트 지정 예제
+#if 0 
 	FAIMoveRequest MoveRequest;
 	MoveRequest.SetGoalLocation(FVector(0.f, 0.f, 0.f));
 	MoveRequest.SetAcceptanceRadius(15.f);
 
-	FNavPathSharedPtr NavPath; // ※ 없어도 되지만(아래 MoveTo 도 인자 하나만 해도 가능), 디버깅 용도로 사용
+	FNavPathSharedPtr NavPath; 
 	MoveTo(MoveRequest, OUT &NavPath);
 
-	if (NavPath.IsValid()) // 디버깅 용도
+	if (NavPath.IsValid()) 
 	{
 		TArray<FNavPathPoint>& PathPoints = NavPath->GetPathPoints();
 		for (const auto& Point : PathPoints)

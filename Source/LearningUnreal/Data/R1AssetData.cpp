@@ -5,7 +5,6 @@
 #include "UObject/ObjectSaveContext.h"
 
 
-// ※ 아래 세 함수는 코드 이해 안함. 한번 적고 다시 고칠일 없으니, 강의 코드 복붙
 void UR1AssetData::PreSave(FObjectPreSaveContext ObjectSaveContext)
 {
 	Super::PreSave(ObjectSaveContext);
@@ -24,14 +23,7 @@ void UR1AssetData::PreSave(FObjectPreSaveContext ObjectSaveContext)
 		for (FAssetEntry AssetEntry : AssetSet.AssetEntries)
 		{
 			FSoftObjectPath& AssetPath = AssetEntry.AssetPath;
-			/*const FString& AssetName = AssetPath.GetAssetName();
-			if (AssetName.StartsWith(TEXT("BP_")) || AssetName.StartsWith(TEXT("B_")) || AssetName.StartsWith(TEXT("WBP_")) ||
-				AssetName.StartsWith(TEXT("GE_")) || AssetName.StartsWith(TEXT("GA_")) || AssetName.StartsWith(TEXT("ABP_")))
-			{
-				FString AssetPathString = AssetPath.GetAssetPathString();
-				AssetPathString.Append(TEXT("_C"));
-				AssetPath = FSoftObjectPath(AssetPathString);
-			}*/
+
 
 			AssetNameToPath.Emplace(AssetEntry.AssetName, AssetEntry.AssetPath);
 			for (const FName& Label : AssetEntry.AssetLabels)

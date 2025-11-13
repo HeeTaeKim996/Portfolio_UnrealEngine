@@ -27,7 +27,7 @@ void AR1Monster::BeginPlay()
 
 void AR1Monster::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
-	FVector SpawnLocation = GetActorLocation() - GetActorForwardVector() * 190.f; // 뒤로 200
+	FVector SpawnLocation = GetActorLocation() - GetActorForwardVector() * 190.f; // Backward 190
 	FRotator SpawnRotation = GetActorRotation();
 
 	FActorSpawnParameters Params;

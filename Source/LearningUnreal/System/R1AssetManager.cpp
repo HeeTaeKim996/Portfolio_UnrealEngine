@@ -16,7 +16,7 @@ UR1AssetManager& UR1AssetManager::Get()
 
 
 	UE_LOG(LogTemp, Fatal, TEXT("Can't Find UR1AssetManager"));
-	return *NewObject<UR1AssetManager>(); // 문법만 지키기 위해 사용
+	return *NewObject<UR1AssetManager>();
 }
 
 void UR1AssetManager::Initialize()

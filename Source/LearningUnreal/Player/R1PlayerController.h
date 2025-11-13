@@ -37,7 +37,7 @@ private:
 	void Input_Attack(const FInputActionValue& InputValue);
 #endif
 
-#if 0 // (초기버전) 블루프린트에 직접 할당
+#if 0 // Obsolate
 protected:
 	UPROPERTY(EditAnywhere, Category = Input)
 	TObjectPtr<class UInputMappingContext> InputMappingContext;

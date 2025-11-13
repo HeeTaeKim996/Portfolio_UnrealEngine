@@ -26,7 +26,6 @@ void UR1AbilitySystemComponent::ActivateAbility(FGameplayTag AbilityTag)
 {
 	for (FGameplayAbilitySpecHandle& SpecHandle : SpecHandles)
 	{
-		// TODO
 
 		if (AbilityTag == R1GameplayTags::Ability_Attack)
 		{

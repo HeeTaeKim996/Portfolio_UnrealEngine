@@ -35,7 +35,6 @@ private:
 #ifdef TEST_UPROPERTY
 	UR1Object* obj1;
 
-	//UPROPERTY() // ※ #ifdef 안에서 사용 불가능해서 주석처리
 	UR1Object* obj2;
 #endif
 

@@ -4,8 +4,8 @@
 
 #include "NativeGameplayTags.h"
 
-// ※ @@@ Build.cs 에 모듈 GameplayTags 추가 필요
-// Edit - ProjectSettings - Project - GameplayTags 에서 등록 잘 됐는지 확인 가능
+
+
 
 namespace R1GameplayTags
 {

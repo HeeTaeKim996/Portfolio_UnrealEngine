@@ -32,12 +32,12 @@ void AR1PlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
-#if 0 // (초기버전) 블루프린트에 직접 할당
+#if 0 // Obsolate
 	if (UEnhancedInputLocalPlayerSubsystem* SubSystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
 	{
 		SubSystem->AddMappingContext(InputMappingContext, 0);
 	}
-#else // AssetManager 사용 버전
+#else // AssetManager Version
 	if (const UR1InputData* InputData = UR1AssetManager::GetAssetByName<UR1InputData>("InputData"))
 	{
 		if (UEnhancedInputLocalPlayerSubsystem* SubSystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
@@ -67,14 +67,14 @@ void AR1PlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
-#if 0 // (초기버전) 블루프린트에 직접 할당
+#if 0 // Obsolate
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent))
 	{
 		EnhancedInputComponent->BindAction(TestAction, ETriggerEvent::Triggered, this, &ThisClass::Input_Test);
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ThisClass::Input_Move);
 		EnhancedInputComponent->BindAction(TurnAction, ETriggerEvent::Triggered, this, &ThisClass::Input_Turn);
 	}
-#else // AssetManager 사용 버전
+#else // AssetManager Version
 	if (const UR1InputData* InputData = UR1AssetManager::GetAssetByName<UR1InputData>("InputData"))
 	{
 		UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(InputComponent);
@@ -125,7 +125,7 @@ void AR1PlayerController::Input_Move(const FInputActionValue& InputValue)
 #else
 		FRotator Rotator = GetControlRotation();
 		FVector Direction = UKismetMathLibrary::GetForwardVector(FRotator(0, Rotator.Yaw, 0));
-		GetPawn()->AddMovementInput(Direction, MovementVector.X); // ※ DeltaTime 은 AddMovementInpt 내부에서 연산되기에, 입력 필요 없음
+		GetPawn()->AddMovementInput(Direction, MovementVector.X);
 #endif
 	}
 	if (MovementVector.Y != 0)
@@ -305,10 +305,9 @@ void AR1PlayerController::OnSetDestinationReleased()
 	{
 		if (TargetActor == nullptr)
 		{
-			// ※ 짧게 클릭했을 때, (1) AI 로 해당 장소로 이동 명령을 내리고, (2) 해당 좌표에 FXCursor 를 생성하는 코드
-			UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, CachedDestination); // ※ @@ 네브메시 가 맵에 할당돼야 이동한다!!!
+			UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, CachedDestination); // ※ @ Require NavMesh In Map
 			UNiagaraFunctionLibrary::SpawnSystemAtLocation(this, FXCursor, CachedDestination, FRotator::ZeroRotator,
-				FVector(1.f, 1.f, 1.f), true, true, ENCPoolMethod::None, true); // ※ 현재 블프로 할당된 커서 자체에 문제가 있어서 안보일거다 그냥 무시하고 넘어감
+				FVector(1.f, 1.f, 1.f), true, true, ENCPoolMethod::None, true);
 		}
 	}
 
@@ -353,7 +352,7 @@ void AR1PlayerController::SetAttack(bool InIsAttacking)
 
 
 
-#if 0 // Ability 공부 목적으로 없애고, ActivateAbility 를 사용하는 구조로
+#if 0 // Obsolate
 	isAttacking = InIsAttacking;
 	if (PlayerAnim)
 	{
@@ -363,7 +362,7 @@ void AR1PlayerController::SetAttack(bool InIsAttacking)
 	isAttacking = InIsAttacking;
 	if (InIsAttacking)
 	{
-		R1Player->ActivateAbility(R1GameplayTags::Ability_Attack); // Ability 공부 목적
+		R1Player->ActivateAbility(R1GameplayTags::Ability_Attack);
 	}
 	else
 	{

@@ -44,9 +44,9 @@ AR1Player::AR1Player()
 	SpringArm->SetupAttachment(GetCapsuleComponent());
 	SpringArm->TargetArmLength = 800.f;
 	SpringArm->SetRelativeRotation(FRotator(-60, 0, 0));
-	SpringArm->bDoCollisionTest = false; // 충돌 무시(탑다운이니)
+	SpringArm->bDoCollisionTest = false; // IgnoreCollision ( TopDown )
 	
-	{ // ※ 이걸 해야 화면 안돌아감
+	{ // ※ Prevecnt Screen Rotation
 		SpringArm->bUsePawnControlRotation = false;
 		SpringArm->bInheritPitch = false;
 		SpringArm->bInheritYaw = false;
@@ -135,7 +135,6 @@ void AR1Player::InitAbilitySystem()
 void AR1Player::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 
 	//RefreshHpBarRatio(); // ※ 임시로 사용
 }
